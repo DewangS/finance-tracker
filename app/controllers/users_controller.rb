@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     @friendships = current_user.friends
   end
   def show
-    
+    @user = User.find(params[:id])
+    @user_stocks = @user.stocks
   end
   def search
     @users = User.search(params[:search_param])

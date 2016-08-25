@@ -14,8 +14,8 @@
             <td><%= @friend.email%></td>
            
             <% if @user.id == current_user.id %>
-              <td><%= link_to "Unfriend", my_friends_path(@friend),  
-                                        :method => :post, 
+              <td><%= link_to "Remove Friend", my_friends_path(@friend),  
+                                        :method => :delete, 
                                         :data => {:confirm => "Are you sure?"}, 
                                         :class => "btn btn-xs btn-danger" %>
               </td>

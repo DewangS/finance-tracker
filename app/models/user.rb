@@ -33,9 +33,7 @@ class User < ActiveRecord::Base
   def except_current_user(users)
     users.reject{ |user| user.id == self.id}
   end
-  def add_friends(user, friend)
-    
-  end
+  
   def self.search(param)
     return User.none if param.blank?
     param.strip!
