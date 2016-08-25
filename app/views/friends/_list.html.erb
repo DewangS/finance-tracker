@@ -1,0 +1,31 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @friendships.size > 0 %>
+        <% @user_friends.each do |user_friend| %>
+          <% @friend = User.find(user_friend.friend_id) %>
+          <tr>
+            <td><%= @friend.full_name%></td>
+            <td><%= @friend.email%></td>
+           
+            <% if @user.id == current_user.id %>
+              <td><%= link_to "Unfriend", my_friends_path(@friend),  
+                                        :method => :post, 
+                                        :data => {:confirm => "Are you sure?"}, 
+                                        :class => "btn btn-xs btn-danger" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td align="center"><strong>No Friends</strong></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
